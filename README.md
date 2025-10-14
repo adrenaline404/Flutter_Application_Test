@@ -1,3 +1,3 @@
 <div>
-🙏 *"Flutter Application Test."*
+🙏 "Flutter Application Test."
 <div>
