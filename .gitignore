@@ -1,0 +1,68 @@
+migrate_working_dir/
+
+# Flutter & Dart
+.dart_tool/
+.pub/
+.pub-cache/
+build/
+coverage/
+flutter_*.png
+
+# Platform build outputs
+android/.gradle/
+android/app/build/
+ios/Flutter/App.framework
+ios/Flutter/Flutter.framework
+ios/Flutter/Flutter.podspec
+ios/Flutter/Generated.xcconfig
+ios/Flutter/ephemeral/
+ios/Pods/
+ios/Runner.xcworkspace/
+ios/build/
+macos/Flutter/ephemeral/
+macos/Pods/
+macos/build/
+linux/build/
+windows/build/
+web/build/
+
+# Xcode
+*.xcworkspace
+*.xcuserstate
+*.xcuserdata
+*.xcodeproj/project.xcworkspace/
+*.xcodeproj/xcuserdata/
+
+# VS Code
+.vscode/
+
+# IntelliJ/Android Studio
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# Miscellaneous
+*.log
+*.tmp
+*.swp
+.DS_Store
+.history
+.atom/
+.buildlog/
+.svn/
+.swiftpm/
+migrate_working_dir/
+
+# Symbolication & Obfuscation
+app.*.symbols
+app.*.map.json
+
+# Asset & doc
+**/doc/api/
+**/ios/Flutter/.last_build_id
+
+# Android Studio build variants
+android/app/debug
+android/app/profile
+android/app/release

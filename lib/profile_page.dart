@@ -1,0 +1,187 @@
+import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'widgets/profile_header.dart';
+import 'widgets/action_buttons.dart';
+import 'widgets/footer.dart';
+import 'edit_profile.dart';
+
+class ProfilePage extends StatefulWidget {
+  const ProfilePage({Key? key}) : super(key: key);
+
+  @override
+  State<ProfilePage> createState() => _ProfilePageState();
+}
+
+class _ProfilePageState extends State<ProfilePage> {
+  String name = 'Shofwan Zhilaludin';
+  String nim = 'C2383207016';
+  String prodi = 'Pendidikan Teknologi Informasi (PTI)';
+  String desc = 'GO SUCCESS!';
+
+  static const _kName = 'profile_name';
+  static const _kNim = 'profile_nim';
+  static const _kProdi = 'profile_prodi';
+  static const _kDesc = 'profile_desc';
+
+  @override
+  void initState() {
+    super.initState();
+    _loadPrefs();
+  }
+
+  Future<void> _loadPrefs() async {
+    final sp = await SharedPreferences.getInstance();
+    setState(() {
+      name = sp.getString(_kName) ?? name;
+      nim = sp.getString(_kNim) ?? nim;
+      prodi = sp.getString(_kProdi) ?? prodi;
+      desc = sp.getString(_kDesc) ?? desc;
+    });
+  }
+
+  Future<void> _onEditPressed() async {
+    final result = await Navigator.of(
+      context,
+    ).push(MaterialPageRoute(builder: (_) => const EditProfilePage()));
+    if (result == true) {
+      _loadPrefs();
+    }
+  }
+
+  void _onDeletePressed() async {
+    final confirm = await showDialog<bool>(
+      context: context,
+      builder: (ctx) => AlertDialog(
+        title: const Text('Konfirmasi'),
+        content: const Text('Yakin ingin menghapus data profil?'),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(ctx, false),
+            child: const Text('Batal'),
+          ),
+          TextButton(
+            onPressed: () => Navigator.pop(ctx, true),
+            child: const Text('Hapus'),
+          ),
+        ],
+      ),
+    );
+    if (confirm == true) {
+      final sp = await SharedPreferences.getInstance();
+      await sp.remove(_kName);
+      await sp.remove(_kNim);
+      await sp.remove(_kProdi);
+      await sp.remove(_kDesc);
+      setState(() {
+        name = 'Shofwan Zhilaludin';
+        nim = 'C2383207016';
+        prodi = 'Pendidikan Teknologi Informasi (PTI)';
+        desc = 'GO SUCCESS!';
+      });
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+    final textColor = isDark ? Colors.white : Colors.black;
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('My Profile', style: TextStyle(color: Colors.white)),
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        centerTitle: true,
+      ),
+      body: SafeArea(
+        child: SingleChildScrollView(
+          padding: const EdgeInsets.all(16),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              ProfileHeader(
+                name: name,
+                nim: nim,
+                prodi: prodi,
+                description: desc,
+                bannerAsset: 'assets/images/banner1.jpg',
+                profileAsset: 'assets/images/profile2.jpg',
+              ),
+              const SizedBox(height: 12),
+              ActionButtons(onEdit: _onEditPressed, onDelete: _onDeletePressed),
+              const SizedBox(height: 16),
+              Container(
+                padding: const EdgeInsets.all(12),
+                decoration: BoxDecoration(
+                  color: isDark ? Colors.white10 : Colors.grey[100],
+                  borderRadius: BorderRadius.circular(8),
+                ),
+                child: Text(desc, style: TextStyle(color: textColor)),
+              ),
+              const SizedBox(height: 24),
+              // Sosial Media Icons
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  _SocialMediaIcon(
+                    icon: FontAwesomeIcons.instagram,
+                    color: const Color(0xFFE1306C),
+                    label: 'shfwn_31',
+                    textColor: textColor,
+                  ),
+                  const SizedBox(width: 24),
+                  _SocialMediaIcon(
+                    icon: FontAwesomeIcons.telegram,
+                    color: const Color(0xFF0088cc),
+                    label: 'adrenaline_404',
+                    textColor: textColor,
+                  ),
+                  const SizedBox(width: 24),
+                  _SocialMediaIcon(
+                    icon: FontAwesomeIcons.github,
+                    color: isDark ? Colors.white : Colors.black,
+                    label: 'adrenaline404',
+                    textColor: textColor,
+                  ),
+                ],
+              ),
+              const SizedBox(height: 24),
+              Footer(author: name),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+// Widget helper untuk icon sosial media
+class _SocialMediaIcon extends StatelessWidget {
+  final IconData icon;
+  final Color color;
+  final String label;
+  final Color textColor;
+
+  const _SocialMediaIcon({
+    Key? key,
+    required this.icon,
+    required this.color,
+    required this.label,
+    required this.textColor,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        CircleAvatar(
+          radius: 24,
+          backgroundColor: color.withOpacity(0.15),
+          child: FaIcon(icon, color: color, size: 28),
+        ),
+        const SizedBox(height: 6),
+        Text(label, style: TextStyle(fontSize: 13, color: textColor)),
+      ],
+    );
+  }
+}
