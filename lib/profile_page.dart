@@ -84,12 +84,14 @@ class _ProfilePageState extends State<ProfilePage> {
 
   @override
   Widget build(BuildContext context) {
-    final isDark = Theme.of(context).brightness == Brightness.dark;
-    final textColor = isDark ? Colors.white : Colors.black;
+    final theme = Theme.of(context);
+    final isDark = theme.brightness == Brightness.dark;
+    final textColor = theme.colorScheme.onSurface;
     return Scaffold(
       appBar: AppBar(
-        title: const Text('My Profile', style: TextStyle(color: Colors.white)),
-        backgroundColor: Colors.transparent,
+        title: const Text('My Profile'),
+        backgroundColor: theme.colorScheme.background,
+        foregroundColor: theme.colorScheme.primary,
         elevation: 0,
         centerTitle: true,
       ),
@@ -110,13 +112,16 @@ class _ProfilePageState extends State<ProfilePage> {
               const SizedBox(height: 12),
               ActionButtons(onEdit: _onEditPressed, onDelete: _onDeletePressed),
               const SizedBox(height: 16),
-              Container(
-                padding: const EdgeInsets.all(12),
-                decoration: BoxDecoration(
-                  color: isDark ? Colors.white10 : Colors.grey[100],
-                  borderRadius: BorderRadius.circular(8),
+              Card(
+                color: theme.colorScheme.surface,
+                elevation: 2,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10),
                 ),
-                child: Text(desc, style: TextStyle(color: textColor)),
+                child: Padding(
+                  padding: const EdgeInsets.all(12),
+                  child: Text(desc, style: TextStyle(color: textColor)),
+                ),
               ),
               const SizedBox(height: 24),
               // Sosial Media Icons
@@ -128,6 +133,7 @@ class _ProfilePageState extends State<ProfilePage> {
                     color: const Color(0xFFE1306C),
                     label: 'shfwn_31',
                     textColor: textColor,
+                    subtitle: '',
                   ),
                   const SizedBox(width: 24),
                   _SocialMediaIcon(
@@ -135,6 +141,7 @@ class _ProfilePageState extends State<ProfilePage> {
                     color: const Color(0xFF0088cc),
                     label: 'adrenaline_404',
                     textColor: textColor,
+                    subtitle: '',
                   ),
                   const SizedBox(width: 24),
                   _SocialMediaIcon(
@@ -142,6 +149,7 @@ class _ProfilePageState extends State<ProfilePage> {
                     color: isDark ? Colors.white : Colors.black,
                     label: 'adrenaline404',
                     textColor: textColor,
+                    subtitle: '',
                   ),
                 ],
               ),
@@ -161,6 +169,7 @@ class _SocialMediaIcon extends StatelessWidget {
   final Color color;
   final String label;
   final Color textColor;
+  final String subtitle;
 
   const _SocialMediaIcon({
     Key? key,
@@ -168,6 +177,7 @@ class _SocialMediaIcon extends StatelessWidget {
     required this.color,
     required this.label,
     required this.textColor,
+    required this.subtitle,
   }) : super(key: key);
 
   @override

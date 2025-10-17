@@ -58,8 +58,15 @@ class _EditProfilePageState extends State<EditProfilePage> {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return Scaffold(
-      appBar: AppBar(title: const Text('Edit Profil'), centerTitle: true),
+      appBar: AppBar(
+        title: const Text('Edit Profil'),
+        centerTitle: true,
+        backgroundColor: theme.colorScheme.background,
+        foregroundColor: theme.colorScheme.primary,
+        elevation: 0,
+      ),
       body: SafeArea(
         child: SingleChildScrollView(
           padding: const EdgeInsets.all(16),
@@ -69,7 +76,10 @@ class _EditProfilePageState extends State<EditProfilePage> {
               children: [
                 TextFormField(
                   controller: _nameC,
-                  decoration: const InputDecoration(labelText: 'Nama'),
+                  decoration: InputDecoration(
+                    labelText: 'Nama',
+                    prefixIcon: const Icon(Icons.person),
+                  ),
                   validator: (v) => (v == null || v.trim().isEmpty)
                       ? 'Nama wajib diisi'
                       : null,
@@ -77,23 +87,44 @@ class _EditProfilePageState extends State<EditProfilePage> {
                 const SizedBox(height: 12),
                 TextFormField(
                   controller: _nimC,
-                  decoration: const InputDecoration(labelText: 'NIM'),
+                  decoration: InputDecoration(
+                    labelText: 'NIM',
+                    prefixIcon: const Icon(Icons.badge),
+                  ),
                 ),
                 const SizedBox(height: 12),
                 TextFormField(
                   controller: _prodiC,
-                  decoration: const InputDecoration(labelText: 'Prodi'),
+                  decoration: InputDecoration(
+                    labelText: 'Prodi',
+                    prefixIcon: const Icon(Icons.school),
+                  ),
                 ),
                 const SizedBox(height: 12),
                 TextFormField(
                   controller: _descC,
-                  decoration: const InputDecoration(labelText: 'Deskripsi'),
+                  decoration: InputDecoration(
+                    labelText: 'Deskripsi',
+                    prefixIcon: const Icon(Icons.description),
+                  ),
                   maxLines: 4,
                 ),
                 const SizedBox(height: 20),
-                ElevatedButton(
-                  onPressed: _savePrefs,
-                  child: const Text('Simpan'),
+                SizedBox(
+                  width: double.infinity,
+                  child: ElevatedButton(
+                    onPressed: _savePrefs,
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: theme.colorScheme.primary,
+                      foregroundColor: theme.colorScheme.onPrimary,
+                      padding: const EdgeInsets.symmetric(vertical: 14),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      textStyle: const TextStyle(fontWeight: FontWeight.bold),
+                    ),
+                    child: const Text('Simpan'),
+                  ),
                 ),
               ],
             ),

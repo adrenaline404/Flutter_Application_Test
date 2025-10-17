@@ -10,11 +10,16 @@ class Footer extends StatelessWidget {
     final isDark = Theme.of(context).brightness == Brightness.dark;
     final textColor = isDark ? Colors.white70 : Colors.black87;
     return Column(
-      children: [
+      children: <Widget>[
         Text(
-          'Made by: $author',
+          'Created by: $author',
           textAlign: TextAlign.center,
-          style: TextStyle(color: textColor),
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+            color: textColor,
+            fontSize: 16,
+            height: 1.5,
+          ),
         ),
       ],
     );
