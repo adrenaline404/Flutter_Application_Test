@@ -73,10 +73,6 @@ flutter test
 ## Informasi Tambahan
 
 - Project dapat dijalankan di Android, iOS, Web, Windows, Linux, dan macOS.
-- Untuk tampilan optimal di GitHub, pastikan file README ini berada di root repository.
-- Jika ingin menampilkan preview gambar, tambahkan contoh berikut:
-  ```markdown
-  ![Contoh Banner](assets/images/banner1.jpg)
   ```
 
 ---
