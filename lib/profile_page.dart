@@ -16,8 +16,9 @@ class ProfilePage extends StatefulWidget {
 class _ProfilePageState extends State<ProfilePage> {
   String name = 'Shofwan Zhilaludin';
   String nim = 'C2383207016';
-  String prodi = 'Pendidikan Teknologi Informasi (PTI)';
-  String desc = 'GO SUCCESS!';
+  String prodi = 'Pendidikan Teknologi Informasi';
+  String desc =
+      'We cant solve problems by using the same kind of thinking we used when we created them. - Albert Einstein';
 
   static const _kName = 'profile_name';
   static const _kNim = 'profile_nim';

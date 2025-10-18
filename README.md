@@ -75,4 +75,4 @@ flutter test
 - Project dapat dijalankan di Android, iOS, Web, Windows, Linux, dan macOS.
 ---
 
-**Created by: Shofwan Zhilaludin**
+**Created by: Shofwan Zhilaludin - adrenaline404**
