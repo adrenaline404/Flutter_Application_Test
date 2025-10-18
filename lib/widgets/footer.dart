@@ -9,19 +9,15 @@ class Footer extends StatelessWidget {
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
     final textColor = isDark ? Colors.white70 : Colors.black87;
-    return Column(
-      children: <Widget>[
-        Text(
-          'Created by: $author',
-          textAlign: TextAlign.center,
-          style: TextStyle(
-            fontWeight: FontWeight.bold,
-            color: textColor,
-            fontSize: 16,
-            height: 1.5,
-          ),
+    return Padding(
+      padding: const EdgeInsets.all(16.0),
+      child: Center(
+        child: Text(
+          // Dikosongkan dulu biar clear
+          '',
+          style: TextStyle(color: textColor, fontSize: 14),
         ),
-      ],
+      ),
     );
   }
 }

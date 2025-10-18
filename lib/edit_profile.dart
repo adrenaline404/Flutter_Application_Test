@@ -31,7 +31,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
     _nameC.text = sp.getString(_kName) ?? 'Shofwan Zhilaludin';
     _nimC.text = sp.getString(_kNim) ?? 'C2383207016';
     _prodiC.text =
-        sp.getString(_kProdi) ?? 'Pendidikan Teknologi Informasi (PTI)';
+        sp.getString(_kProdi) ?? 'Pendidikan Teknologi Informasi (S1)';
     _descC.text = sp.getString(_kDesc) ?? 'GO SUCCESS!';
     setState(() {});
   }

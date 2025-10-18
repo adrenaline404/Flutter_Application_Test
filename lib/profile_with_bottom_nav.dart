@@ -9,7 +9,7 @@ class CustomListViewPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     return Scaffold(
-      appBar: AppBar(title: const Text('ListView Test'), centerTitle: true),
+      appBar: AppBar(title: const Text('ListView'), centerTitle: true),
       backgroundColor: theme.colorScheme.background,
       body: ListView.separated(
         padding: const EdgeInsets.all(16),
@@ -29,11 +29,11 @@ class CustomListViewPage extends StatelessWidget {
               ),
             ),
             title: Text(
-              'Item ${i + 1}',
+              'Shofwan Zhilaludin',
               style: TextStyle(color: theme.colorScheme.onSurface),
             ),
             subtitle: Text(
-              'Shofwan Zhilaludin',
+              'C2383207016',
               style: TextStyle(
                 color: theme.colorScheme.onSurface.withOpacity(0.7),
               ),
@@ -52,7 +52,7 @@ class CustomGridViewPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     return Scaffold(
-      appBar: AppBar(title: const Text('GridView Test'), centerTitle: true),
+      appBar: AppBar(title: const Text('GridView'), centerTitle: true),
       backgroundColor: theme.colorScheme.background,
       body: Padding(
         padding: const EdgeInsets.all(16),
@@ -92,7 +92,7 @@ class CustomCardPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     return Scaffold(
-      appBar: AppBar(title: const Text('Card Test'), centerTitle: true),
+      appBar: AppBar(title: const Text('Card'), centerTitle: true),
       backgroundColor: theme.colorScheme.background,
       body: ListView.builder(
         padding: const EdgeInsets.all(16),
@@ -107,11 +107,11 @@ class CustomCardPage extends StatelessWidget {
           child: ListTile(
             leading: Icon(Icons.credit_card, color: theme.colorScheme.primary),
             title: Text(
-              'Card ${i + 1}',
+              'Shofwan Zhilaludin',
               style: TextStyle(color: theme.colorScheme.onSurface),
             ),
             subtitle: Text(
-              'Shofwan Zhilaludin',
+              'C2383207016',
               style: TextStyle(
                 color: theme.colorScheme.onSurface.withOpacity(0.7),
               ),

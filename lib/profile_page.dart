@@ -54,7 +54,15 @@ class _ProfilePageState extends State<ProfilePage> {
       context: context,
       builder: (ctx) => AlertDialog(
         title: const Text('Konfirmasi'),
-        content: const Text('Yakin ingin menghapus data profil?'),
+        content: Row(
+          children: const [
+            Icon(Icons.warning, color: Colors.red),
+            SizedBox(width: 12),
+            Expanded(
+              child: Text('Apakah Anda yakin ingin menghapus data profil?'),
+            ),
+          ],
+        ),
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(ctx, false),
@@ -76,7 +84,7 @@ class _ProfilePageState extends State<ProfilePage> {
       setState(() {
         name = 'Shofwan Zhilaludin';
         nim = 'C2383207016';
-        prodi = 'Pendidikan Teknologi Informasi (PTI)';
+        prodi = 'Pendidikan Teknologi Informasi';
         desc = 'GO SUCCESS!';
       });
     }
@@ -106,8 +114,8 @@ class _ProfilePageState extends State<ProfilePage> {
                 nim: nim,
                 prodi: prodi,
                 description: desc,
-                bannerAsset: 'assets/images/banner1.jpg',
-                profileAsset: 'assets/images/profile2.jpg',
+                bannerAsset: 'assets/images/banner.jpg',
+                profileAsset: 'assets/images/profile.jpg',
               ),
               const SizedBox(height: 12),
               ActionButtons(onEdit: _onEditPressed, onDelete: _onDeletePressed),
