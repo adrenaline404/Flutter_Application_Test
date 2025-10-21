@@ -4,12 +4,19 @@ class ActionButtons extends StatelessWidget {
   final VoidCallback onEdit;
   final VoidCallback onDelete;
 
-  const ActionButtons({Key? key, required this.onEdit, required this.onDelete})
-    : super(key: key);
+  const ActionButtons({
+    super.key,
+    required this.onEdit,
+    required this.onDelete,
+  });
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final isDark = theme.brightness == Brightness.dark;
+    final borderColor = isDark
+        ? Colors.white.withOpacity(0.3)
+        : theme.colorScheme.primary.withOpacity(0.2);
     return Row(
       children: [
         Expanded(
@@ -19,9 +26,12 @@ class ActionButtons extends StatelessWidget {
               padding: const EdgeInsets.symmetric(vertical: 0),
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(10),
+                side: BorderSide(color: borderColor, width: 2),
               ),
-              backgroundColor: theme.colorScheme.primary,
-              elevation: 2,
+              backgroundColor: isDark
+                  ? Colors.black
+                  : theme.colorScheme.primary,
+              elevation: 4,
               shadowColor: theme.colorScheme.secondary.withOpacity(0.2),
             ),
             child: Container(
@@ -50,9 +60,10 @@ class ActionButtons extends StatelessWidget {
               padding: const EdgeInsets.symmetric(vertical: 0),
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(10),
+                side: BorderSide(color: borderColor, width: 2),
               ),
-              backgroundColor: theme.colorScheme.error,
-              elevation: 2,
+              backgroundColor: isDark ? Colors.black : theme.colorScheme.error,
+              elevation: 4,
               shadowColor: theme.colorScheme.error.withOpacity(0.2),
             ),
             child: Container(

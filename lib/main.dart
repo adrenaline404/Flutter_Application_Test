@@ -4,15 +4,15 @@ import 'profile_with_bottom_nav.dart';
 // Modern dynamic black theme palette
 const Color kPrimaryColor = Color(0xFF212121); // true black
 const Color kAccentColor = Color(0xFF00B4D8); // vibrant cyan
-const Color kSurfaceDark = Color(0xFF2A2A40); // dark surface
-const Color kBackgroundDark = Color(0xFF181A20); // background
-const Color kCardDark = Color(0xFF23232F); // card color
+const Color kSurfaceDark = Colors.black; // dark surface now pure black
+const Color kBackgroundDark = Colors.black; // background now pure black
+const Color kCardDark = Colors.black; // card color now pure black
 const Color kErrorColor = Color(0xFFEF476F); // error pink
 
 void main() => runApp(const MyApp());
 
 class MyApp extends StatefulWidget {
-  const MyApp({Key? key}) : super(key: key);
+  const MyApp({super.key});
 
   @override
   State<MyApp> createState() => _MyAppState();
@@ -26,7 +26,7 @@ class _MyAppState extends State<MyApp> {
     scaffoldBackgroundColor: kBackgroundDark,
     useMaterial3: true,
     appBarTheme: AppBarTheme(
-      backgroundColor: Colors.transparent,
+      backgroundColor: Colors.black,
       elevation: 0,
       titleTextStyle: const TextStyle(
         color: Colors.white,
@@ -43,8 +43,6 @@ class _MyAppState extends State<MyApp> {
       onSecondary: Colors.black,
       error: kErrorColor,
       onError: Colors.white,
-      background: kBackgroundDark,
-      onBackground: Colors.white,
       surface: kSurfaceDark,
       onSurface: Colors.white,
     ),
@@ -71,7 +69,7 @@ class _MyAppState extends State<MyApp> {
     ),
     iconTheme: const IconThemeData(color: kAccentColor),
     bottomNavigationBarTheme: const BottomNavigationBarThemeData(
-      backgroundColor: kSurfaceDark,
+      backgroundColor: Colors.black,
       selectedItemColor: kAccentColor,
       unselectedItemColor: Colors.white54,
       showUnselectedLabels: true,
@@ -101,8 +99,6 @@ class _MyAppState extends State<MyApp> {
       onSecondary: Colors.white,
       error: kErrorColor,
       onError: Colors.white,
-      background: Colors.white,
-      onBackground: Colors.black,
       surface: Colors.white,
       onSurface: Colors.black,
     ),
@@ -149,7 +145,7 @@ class _MyAppState extends State<MyApp> {
         themeSwitcher: Switch(
           value: isDark,
           onChanged: (val) => setState(() => isDark = val),
-          activeColor: kAccentColor,
+          activeThumbColor: kAccentColor,
           inactiveThumbColor: Colors.white,
           inactiveTrackColor: Colors.white24,
         ),

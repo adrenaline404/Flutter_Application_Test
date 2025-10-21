@@ -1,8 +1,6 @@
-# Flutter Application Test
+# Flutter Application
 
-## Deskripsi Project
-
-Aplikasi Flutter ini merupakan bagian dari Test (Project) untuk Pembelajaran. Fitur utama aplikasi adalah halaman profil dengan kemampuan edit, navigasi bawah (bottom navigation), serta beberapa widget custom seperti header profil, tombol aksi, dan footer.
+Aplikasi Flutter sederhana yang menampilkan halaman profil dengan fitur edit, navigasi bawah (bottom navigation), dan beberapa widget custom seperti header profil, tombol aksi, serta footer.
 
 ## Fitur Utama
 
@@ -29,7 +27,6 @@ assets/images/
   profile2.jpg
   banner1.jpg
   banner2.jpg
-  banner3.jpg
 test/
   widget_test.dart
 pubspec.yaml
@@ -37,7 +34,7 @@ pubspec.yaml
 
 ## Cara Menjalankan Aplikasi
 
-1. Pastikan Flutter SDK sudah terpasang.
+1. Pastikan Flutter SDK sudah terpasang di komputer Anda.
 2. Install dependencies:
    ```sh
    flutter pub get
@@ -60,7 +57,6 @@ flutter:
     - assets/images/profile2.jpg
     - assets/images/banner1.jpg
     - assets/images/banner2.jpg
-    - assets/images/banner3.jpg
 ```
 
 ## Pengujian
@@ -70,9 +66,16 @@ Untuk menjalankan pengujian widget:
 flutter test
 ```
 
-## Informasi Tambahan
+## Pengembangan
 
 - Project dapat dijalankan di Android, iOS, Web, Windows, Linux, dan macOS.
+- Struktur kode modular, mudah dikembangkan dan dipelihara.
+- Untuk menambah asset gambar, letakkan di `assets/images/` dan daftarkan di `pubspec.yaml`.
+
+## Kontribusi
+
+Kontribusi terbuka untuk perbaikan bug atau penambahan fitur. Silakan fork repository ini dan ajukan pull request.
+
 ---
 
-**Created by: Shofwan Zhilaludin - adrenaline404**
+**Created by: Shofwan Zhilaludin**

@@ -3,19 +3,22 @@ import 'package:flutter/material.dart';
 class Footer extends StatelessWidget {
   final String author;
 
-  const Footer({Key? key, required this.author}) : super(key: key);
+  const Footer({super.key, required this.author});
 
   @override
   Widget build(BuildContext context) {
-    final isDark = Theme.of(context).brightness == Brightness.dark;
-    final textColor = isDark ? Colors.white70 : Colors.black87;
+    final theme = Theme.of(context);
+    final textColor = theme.colorScheme.onSurface.withOpacity(0.25);
     return Padding(
-      padding: const EdgeInsets.all(16.0),
+      padding: const EdgeInsets.only(top: 32, bottom: 8),
       child: Center(
         child: Text(
-          // Dikosongkan dulu biar clear
-          '',
-          style: TextStyle(color: textColor, fontSize: 14),
+          'Created By: $author',
+          style: TextStyle(
+            color: textColor,
+            fontSize: 12,
+            fontWeight: FontWeight.w500,
+          ),
         ),
       ),
     );

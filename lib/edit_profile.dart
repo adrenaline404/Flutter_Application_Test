@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class EditProfilePage extends StatefulWidget {
-  const EditProfilePage({Key? key}) : super(key: key);
+  const EditProfilePage({super.key});
 
   @override
   State<EditProfilePage> createState() => _EditProfilePageState();
@@ -30,21 +30,26 @@ class _EditProfilePageState extends State<EditProfilePage> {
     final sp = await SharedPreferences.getInstance();
     _nameC.text = sp.getString(_kName) ?? 'Shofwan Zhilaludin';
     _nimC.text = sp.getString(_kNim) ?? 'C2383207016';
-    _prodiC.text =
-        sp.getString(_kProdi) ?? 'Pendidikan Teknologi Informasi (S1)';
-    _descC.text = sp.getString(_kDesc) ?? 'GO SUCCESS!';
+    _prodiC.text = sp.getString(_kProdi) ?? 'Pendidikan Teknologi Informasi';
+    _descC.text =
+        sp.getString(_kDesc) ??
+        'We cant solve problems by using the same kind of thinking we used when we created them. - Albert Einstein';
     setState(() {});
   }
 
   Future<void> _savePrefs() async {
-    if (!_formKey.currentState!.validate()) return;
+    if (_formKey.currentState == null || !_formKey.currentState!.validate()) {
+      return;
+    }
     final sp = await SharedPreferences.getInstance();
     await sp.setString(_kName, _nameC.text.trim());
     await sp.setString(_kNim, _nimC.text.trim());
     await sp.setString(_kProdi, _prodiC.text.trim());
     await sp.setString(_kDesc, _descC.text.trim());
     // Kembalikan data ke previous screen
-    Navigator.of(context).pop(true); // true
+    if (mounted) {
+      Navigator.of(context).pop(true); // true
+    }
   }
 
   @override
@@ -63,7 +68,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
       appBar: AppBar(
         title: const Text('Edit Profil'),
         centerTitle: true,
-        backgroundColor: theme.colorScheme.background,
+        backgroundColor: theme.colorScheme.surface,
         foregroundColor: theme.colorScheme.primary,
         elevation: 0,
       ),
@@ -115,6 +120,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                   child: ElevatedButton(
                     onPressed: _savePrefs,
                     style: ElevatedButton.styleFrom(
+                      // Testing color scheme from profile_page.dart
                       backgroundColor: theme.colorScheme.primary,
                       foregroundColor: theme.colorScheme.onPrimary,
                       padding: const EdgeInsets.symmetric(vertical: 14),

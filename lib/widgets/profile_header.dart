@@ -9,14 +9,14 @@ class ProfileHeader extends StatelessWidget {
   final String profileAsset;
 
   const ProfileHeader({
-    Key? key,
+    super.key,
     required this.name,
     required this.nim,
     required this.prodi,
     required this.description,
     required this.bannerAsset,
     required this.profileAsset,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -25,8 +25,9 @@ class ProfileHeader extends StatelessWidget {
     final textColor = theme.colorScheme.onSurface;
     final secondaryTextColor = theme.colorScheme.primary.withOpacity(0.8);
     final fadedTextColor = theme.colorScheme.onSurface.withOpacity(0.6);
-    final borderColor = theme.colorScheme.primary.withOpacity(0.3);
-    final profileBorderColor = theme.colorScheme.primary;
+    // Gunakan warna outline putih semi-transparan untuk kontras di background hitam
+    final borderColor = Colors.white.withOpacity(0.25);
+    final profileBorderColor = Colors.white.withOpacity(0.7);
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -34,12 +35,12 @@ class ProfileHeader extends StatelessWidget {
         Container(
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(16),
-            border: Border.all(color: borderColor, width: 2),
+            border: Border.all(color: borderColor, width: 3),
             boxShadow: [
               BoxShadow(
-                color: theme.colorScheme.primary.withOpacity(0.08),
-                blurRadius: 8,
-                offset: const Offset(0, 4),
+                color: Colors.black.withOpacity(0.18),
+                blurRadius: 12,
+                offset: const Offset(0, 6),
               ),
             ],
           ),
@@ -52,8 +53,10 @@ class ProfileHeader extends StatelessWidget {
               fit: BoxFit.cover,
               errorBuilder: (context, error, stackTrace) => Container(
                 height: 160,
-                color: theme.colorScheme.surface,
-                child: const Center(child: Icon(Icons.broken_image)),
+                color: Colors.black,
+                child: const Center(
+                  child: Icon(Icons.broken_image, color: Colors.white54),
+                ),
               ),
             ),
           ),
@@ -67,12 +70,17 @@ class ProfileHeader extends StatelessWidget {
               height: width * 0.24,
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
-                border: Border.all(color: profileBorderColor, width: 3),
+                border: Border.all(color: profileBorderColor, width: 4),
                 boxShadow: [
                   BoxShadow(
-                    color: profileBorderColor.withOpacity(0.2),
-                    blurRadius: 8,
-                    offset: const Offset(0, 4),
+                    color: const Color.fromARGB(
+                      255,
+                      35,
+                      135,
+                      205,
+                    ).withOpacity(0.25),
+                    blurRadius: 10,
+                    offset: const Offset(0, 5),
                   ),
                 ],
               ),
@@ -85,7 +93,7 @@ class ProfileHeader extends StatelessWidget {
                   errorBuilder: (context, error, stackTrace) => Container(
                     width: width * 0.24,
                     height: width * 0.24,
-                    color: theme.colorScheme.surface,
+                    color: Colors.black,
                     child: Icon(
                       Icons.person,
                       size: 40,

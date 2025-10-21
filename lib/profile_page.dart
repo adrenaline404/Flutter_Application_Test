@@ -7,7 +7,7 @@ import 'widgets/footer.dart';
 import 'edit_profile.dart';
 
 class ProfilePage extends StatefulWidget {
-  const ProfilePage({Key? key}) : super(key: key);
+  const ProfilePage({super.key});
 
   @override
   State<ProfilePage> createState() => _ProfilePageState();
@@ -54,24 +54,28 @@ class _ProfilePageState extends State<ProfilePage> {
     final confirm = await showDialog<bool>(
       context: context,
       builder: (ctx) => AlertDialog(
-        title: const Text('Konfirmasi'),
+        backgroundColor: const Color(0xFF23232F),
+        title: const Text('Konfirmasi', style: TextStyle(color: Colors.white)),
         content: Row(
           children: const [
             Icon(Icons.warning, color: Colors.red),
             SizedBox(width: 12),
             Expanded(
-              child: Text('Apakah Anda yakin ingin menghapus data profil?'),
+              child: Text(
+                'Apakah Anda yakin ingin menghapus data profil?',
+                style: TextStyle(color: Colors.white70),
+              ),
             ),
           ],
         ),
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(ctx, false),
-            child: const Text('Batal'),
+            child: const Text('Batal', style: TextStyle(color: Colors.white)),
           ),
           TextButton(
             onPressed: () => Navigator.pop(ctx, true),
-            child: const Text('Hapus'),
+            child: const Text('Hapus', style: TextStyle(color: Colors.red)),
           ),
         ],
       ),
@@ -86,7 +90,8 @@ class _ProfilePageState extends State<ProfilePage> {
         name = 'Shofwan Zhilaludin';
         nim = 'C2383207016';
         prodi = 'Pendidikan Teknologi Informasi';
-        desc = 'GO SUCCESS!';
+        desc =
+            'We cant solve problems by using the same kind of thinking we used when we created them. - Albert Einstein ';
       });
     }
   }
@@ -99,7 +104,7 @@ class _ProfilePageState extends State<ProfilePage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('My Profile'),
-        backgroundColor: theme.colorScheme.background,
+        backgroundColor: theme.colorScheme.surface,
         foregroundColor: theme.colorScheme.primary,
         elevation: 0,
         centerTitle: true,
@@ -142,7 +147,6 @@ class _ProfilePageState extends State<ProfilePage> {
                     color: const Color(0xFFE1306C),
                     label: 'shfwn_31',
                     textColor: textColor,
-                    subtitle: '',
                   ),
                   const SizedBox(width: 24),
                   _SocialMediaIcon(
@@ -150,7 +154,6 @@ class _ProfilePageState extends State<ProfilePage> {
                     color: const Color(0xFF0088cc),
                     label: 'adrenaline_404',
                     textColor: textColor,
-                    subtitle: '',
                   ),
                   const SizedBox(width: 24),
                   _SocialMediaIcon(
@@ -158,12 +161,11 @@ class _ProfilePageState extends State<ProfilePage> {
                     color: isDark ? Colors.white : Colors.black,
                     label: 'adrenaline404',
                     textColor: textColor,
-                    subtitle: '',
                   ),
                 ],
               ),
-              const SizedBox(height: 24),
-              Footer(author: name),
+              // Tambahkan Footer di bawah icon sosial media
+              const Footer(author: 'Shofwan Zhilaludin'),
             ],
           ),
         ),
@@ -178,15 +180,12 @@ class _SocialMediaIcon extends StatelessWidget {
   final Color color;
   final String label;
   final Color textColor;
-  final String subtitle;
-
   const _SocialMediaIcon({
     Key? key,
     required this.icon,
     required this.color,
     required this.label,
     required this.textColor,
-    required this.subtitle,
   }) : super(key: key);
 
   @override

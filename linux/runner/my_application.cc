@@ -1,4 +1,10 @@
+#ifdef __cplusplus
+extern "C" {
+#endif
 #include "my_application.h"
+#ifdef __cplusplus
+}
+#endif
 
 #include <flutter_linux/flutter_linux.h>
 #ifdef GDK_WINDOWING_X11
