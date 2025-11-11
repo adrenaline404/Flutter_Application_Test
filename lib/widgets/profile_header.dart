@@ -25,7 +25,7 @@ class ProfileHeader extends StatelessWidget {
     final textColor = theme.colorScheme.onSurface;
     final secondaryTextColor = theme.colorScheme.primary.withOpacity(0.8);
     final fadedTextColor = theme.colorScheme.onSurface.withOpacity(0.6);
-    // Gunakan warna outline putih semi-transparan untuk kontras di background hitam
+    // Colors for borders
     final borderColor = Colors.white.withOpacity(0.25);
     final profileBorderColor = Colors.white.withOpacity(0.7);
 

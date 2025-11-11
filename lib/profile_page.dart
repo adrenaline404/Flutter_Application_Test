@@ -164,7 +164,7 @@ class _ProfilePageState extends State<ProfilePage> {
                   ),
                 ],
               ),
-              // Tambahkan Footer di bawah icon sosial media
+              // Footer
               const Footer(author: 'Shofwan Zhilaludin'),
             ],
           ),
