@@ -118,7 +118,7 @@ class ProfileHeader extends StatelessWidget {
                   ),
                   const SizedBox(height: 4),
                   Text(
-                    'Nomor Induk Mahasiswa: $nim',
+                    'NIM: $nim',
                     style: TextStyle(color: secondaryTextColor),
                   ),
                   Text(

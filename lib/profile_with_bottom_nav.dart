@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'profile_page.dart';
 
-// --- Custom Pages ---
+// Custom Pages
 class CustomListViewPage extends StatelessWidget {
   const CustomListViewPage({super.key});
 

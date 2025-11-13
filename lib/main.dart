@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'profile_with_bottom_nav.dart';
 
-// Modern dynamic black theme palette
-const Color kPrimaryColor = Color(0xFF212121); // true black
-const Color kAccentColor = Color(0xFF00B4D8); // vibrant cyan
-const Color kSurfaceDark = Colors.black; // dark surface now pure black
-const Color kBackgroundDark = Colors.black; // background now pure black
-const Color kCardDark = Colors.black; // card color now pure black
-const Color kErrorColor = Color(0xFFEF476F); // error pink
+// black theme palette
+const Color kPrimaryColor = Color(0xFF212121);
+const Color kAccentColor = Color(0xFF00B4D8);
+const Color kSurfaceDark = Colors.black;
+const Color kBackgroundDark = Colors.black;
+const Color kCardDark = Colors.black;
+const Color kErrorColor = Color(0xFFEF476F);
 
 void main() => runApp(const MyApp());
 

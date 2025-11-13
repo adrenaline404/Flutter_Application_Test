@@ -5,6 +5,7 @@ import 'widgets/profile_header.dart';
 import 'widgets/action_buttons.dart';
 import 'widgets/footer.dart';
 import 'edit_profile.dart';
+import '../features/form_app_launcher.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});
@@ -137,7 +138,13 @@ class _ProfilePageState extends State<ProfilePage> {
                   child: Text(desc, style: TextStyle(color: textColor)),
                 ),
               ),
+              // *Backup: const SizedBox(height: 24),
+
+              // Test - Add FormAppLauncher
+              const SizedBox(height: 20),
+              const FormAppLauncher(),
               const SizedBox(height: 24),
+
               // Sosial Media Icons
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,

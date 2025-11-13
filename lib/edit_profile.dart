@@ -86,7 +86,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                     prefixIcon: const Icon(Icons.person),
                   ),
                   validator: (v) => (v == null || v.trim().isEmpty)
-                      ? 'Nama wajib diisi'
+                      ? 'Nama wajib diisi!'
                       : null,
                 ),
                 const SizedBox(height: 12),
